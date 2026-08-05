@@ -7,7 +7,7 @@ class Solution(object):
         """
         Min = nums[0]
         l, r = 0, len(nums) - 1 
-        while l < r:
+        while l <= r:
             m = (l + r) // 2
             if nums[l] < nums[r]:
                 Min = min(nums[l], Min) 
@@ -16,6 +16,6 @@ class Solution(object):
             if nums[m] < nums[l]:
                 r = m - 1                
             else:
-                Min = min(nums[r], Min)
+
                 l = m + 1
         return Min
