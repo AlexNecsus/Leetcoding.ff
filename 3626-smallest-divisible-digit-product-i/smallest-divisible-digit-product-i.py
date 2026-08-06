@@ -17,9 +17,10 @@ class Solution(object):
                 product *= digit
                 n //= 10
             return product
+
         dp = dpn(n)
         while dp % t != 0:
-            if dp == 0 and t % 2 == 0:
+            if dp == 0:
                 return n
             n += 1
             dp = dpn(n)
