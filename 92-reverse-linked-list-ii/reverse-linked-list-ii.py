@@ -12,22 +12,26 @@ class Solution(object):
         if head is None or right == left: return head
 
         dummy = ListNode(0, head)
-
-        prev = dummy
+        
+        prev = dummy # first of left
+        # Move to node before reversal
         for _ in range(left - 1):
-            prev = prev.next
+            prev = prev.next 
 
-        curr = prev.next
-        tail = curr
-
-        prevN = None
-        for _ in range(right - left + 1):
+        # Start reversal
+        curr = prev.next # 2
+        tail = curr # Track tail as the original first node of the segment , (2)
+        
+        # Reverse the sublist
+        prevN = None # 2 -> 3 -> 4
+        for _ in range(right - left + 1): # Include ALL nodes
             tmp = curr.next
             curr.next = prevN
             prevN = curr
-            curr = tmp
+            curr = tmp # 3 -> 4 -> 5
         
-        prev.next = prevN
-        tail.next = curr
+        # Reconnect list
+        prev.next = prevN # 1 => 4 # prev_node is the new head of reversed segment
+        tail.next = curr # 2 => 5 # Connect tail to the rest of the list
 
-        return dummy.next
+        return dummy.next # 1->....
